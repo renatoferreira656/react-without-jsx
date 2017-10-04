@@ -1,7 +1,11 @@
 (function(Project){
-  var hello = Project.React.create(function () {
-    return Project.React.createElement('div', null,'hello world');
+  var login = Project.React.create(function () {
+    var form = new Project.Form('login').addInput('login').addInput('password');
+    form.addButton('Login', function(){
+      console.log("foi =D");
+    });
+    return form.form();
   });
 
-  Project.React.addScreen(hello, document.getElementById('content'));
+  Project.React.addScreen(login, document.getElementById('content'));
 })(Project);
