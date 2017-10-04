@@ -1,13 +1,16 @@
 (function(Project, React, ReactDOM){
-  Project = Project || {
-    ReactDOM:  ReactDOM
-  };
+  Project = Project || {};
+  Project.ReactDOM = ReactDOM || {};
   Project.React = React || {};
 
   Project.React.create = function (render){
     var clazz = function(){};
     Project.util.extends(clazz.prototype || {}, Project.React.Component.prototype);
-    clazz.prototype.render = render;
+    if( typeof(render) == 'function' ){
+      clazz.prototype.render = render;
+    } else {
+      Project.util.extends(clazz.prototype, render);
+    }
     return clazz;
   }
 
