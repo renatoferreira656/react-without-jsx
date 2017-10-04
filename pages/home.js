@@ -1,24 +1,9 @@
-(function(R, RD){
+(function(Project){
 
-  var a = function (obj, newObj) {
-    for ( var i in newObj){
-      obj[i] = newObj[i];
-    }
-    return obj;
-  };
+  var hello = Project.React.create(function () {
+    return Project.React.createElement('div', null,'hello world');
+  });
 
-  var A = function(){
+  Project.React.addScreen(hello, document.getElementById('content'));
 
-  }
-
-  A.prototype = a({}, R.Component.prototype);
-  A.prototype.render = function () {
-    return R.createElement('div', null, this.props.value + ' from a');
-  }
-
-  RD.render(
-    R.createElement(A, {'value': 'value'}, null),
-    document.getElementById('content')
-  );
-  
-})(React, ReactDOM);
+})(Project);
